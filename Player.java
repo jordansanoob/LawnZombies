@@ -30,7 +30,7 @@ public class Player extends JPanel{
 	private int x, y;
 	private int deltaX = 0;
 	private int deltaY = 0;
-	public String direction;
+	public String direction, health;
 	
 	/**
 	 * Player class adds in the Player and Bullet images
@@ -85,5 +85,21 @@ public class Player extends JPanel{
 		Graphics2D g2 = (Graphics2D) page;
 //		Player.translate(deltaX, deltaY);
 //		Bullet.translate(deltaX, deltaY);
+	}
+	public int getDirection(){
+		return this.direction;
+	}
+	
+	public int setdirection(String d){
+		return this.direction = d;
+	}
+	public int gethealth(){
+		return this.health;
+	}
+	public int getX(){
+		return this.x;
+	}
+	public int getY(){
+		return this.y;
 	}
 }
