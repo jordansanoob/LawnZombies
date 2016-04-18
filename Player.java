@@ -27,10 +27,10 @@ public class Player extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private final int WIDTH = 300, HEIGHT = 600;
 	private Image PlayerL, PlayerR, PlayerD, PlayerU, Bullet; //images we will import in
-	private int x, y;
+	private int x, y, health;
 	private int deltaX = 0;
 	private int deltaY = 0;
-	public String direction, health;
+	public String direction;
 	
 	/**
 	 * Player class adds in the Player and Bullet images
