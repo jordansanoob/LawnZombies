@@ -26,7 +26,7 @@ public class Player extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private final int WIDTH = 300, HEIGHT = 600;
-	private Image Player, Bullet; //images we will import in
+	private Image PlayerL, PlayerR, PlayerD, PlayerU, Bullet; //images we will import in
 	private int x, y;
 	private int deltaX = 0;
 	private int deltaY = 0;
@@ -40,7 +40,10 @@ public class Player extends JPanel{
 	public Player() {
 		x = WIDTH / 2;
 		y = HEIGHT / 2;
-		ImageIcon Player = new ImageIcon("Player.gif"); //Player
+		ImageIcon PlayerU = new ImageIcon("PlayerU.gif"); //Player
+		ImageIcon PlayerL = new IamgeIcon("PlayerL.gif");
+		ImageIcon PlayerR = new ImageIcon("PlayerR.gif");
+		ImageIcon PlayerD = new ImageIcon("PlayerD.gif");
 		setBackground(Color.GREEN);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setFocusable(true);
