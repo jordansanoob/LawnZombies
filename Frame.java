@@ -39,7 +39,7 @@ public class Frame extends Screen implements Runnable{
 		try{
 			thread.join(); //joins all the threads togehter
 		}
-		catch (InterruptionException e){  //catches all the exceptions
+		catch (InterruptedException e){  //catches all the exceptions
 			e.printStackTrace();
 		}
 		System.exit(1);
@@ -51,7 +51,6 @@ public class Frame extends Screen implements Runnable{
 	   */
 	  public void run(){
 	  	while(running){
-	  		System.out.println("This code is working!");
 	  		//game loop runs the game
 	  	}
 	  	stop();
