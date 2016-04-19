@@ -17,13 +17,14 @@ import javax.swing.JPanel;
  *  
  */
 public class Controller extends Frame implements Runnable{
-	private ArrayList<Bullet> b = new ArrayList<Bullet>();
-	private ArrayList<Zombie> zombieArray = new ArrayList<Zombie>();
+	private LinkedList<Bullet> b = new LinkedList<Bullet>();
+	private LinkedList<Zombie> z = new LinkedList<Zombie>();
 	private Image background;
 	
 	//will probably have a linked list of zombies as well
 	
 	Bullet TempBullet;
+	Zombie TempZombie;
 	//Game game; //what is the Game supposed to be?
 	
 	public Controller(){;
@@ -39,13 +40,23 @@ public class Controller extends Frame implements Runnable{
 			
 			TempBullet.tick();
 		}
+		for(int i = 0; i < z.size(); i++){
+			TempZombie = z.get(i);
+			
+			TempZombie.tick();
+		}
 	}
 	
 	public void draw(Graphics g){
 		for(int i = 0; i < b.size(); i++){
 			TempBullet = b.get(i);
 			TempBullet.draw(g);
-		}	
+		}
+		for(int i = 0; i < z.size(); i++){
+			TempZombie = z.get(i);
+			
+			TempZombie.draw();
+		}
 	}
 		
 	public void addBullet(Bullet bullet){
@@ -56,12 +67,12 @@ public class Controller extends Frame implements Runnable{
 		b.remove(bullet);
 	}
 	
-	public void addZombie(Zombie z){
-		zombieArray.add(z);
+	public void addZombie(Zombie zombie){
+		z.add(z);
 	}
 	
-	public void removeZombie(Zombie z){
-		zombieArray.remove(z);
+	public void removeZombie(Zombie zombie){
+		z.remove(z);
 	}
 
 	@Override
