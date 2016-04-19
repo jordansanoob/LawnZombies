@@ -1,6 +1,9 @@
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 import javax.swing.JPanel;
 
 
@@ -68,11 +71,11 @@ public class Controller extends Frame implements Runnable{
 	}
 	
 	public void addZombie(Zombie zombie){
-		z.add(z);
+		z.add(zombie);
 	}
 	
 	public void removeZombie(Zombie zombie){
-		z.remove(z);
+		z.remove(zombie);
 	}
 
 	@Override
