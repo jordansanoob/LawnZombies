@@ -3,8 +3,10 @@
  */
 //import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.LayoutManager;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 /**
@@ -17,11 +19,12 @@ public class Frame extends Screen implements Runnable{
 	public static final int w = 400; 
 	public static final int h = w/12 * 9;
 	public static final int SCALE = 2;
-	public final String TITLE = "LAWN ZOMBIES";
+	public static boolean open;
 	
 	private boolean running = false;
 	private Thread thread;
 	private static final long serialVersionUID = 1L;
+	//private static final LayoutManager Flowlayout() = null;
 	
 	private synchronized void start(){
 		if(running){
@@ -57,18 +60,19 @@ public class Frame extends Screen implements Runnable{
 	  }
 	  public static void main (String[] args){
 
-	      Frame frame = new Frame();
+	      JFrame frame = new JFrame("LAWN ZOMBIES");
 	      frame.setPreferredSize(new Dimension(w * SCALE, h * SCALE));
 	      frame.setMaximumSize(new Dimension(w * SCALE, h * SCALE));
 	      frame.setMinimumSize(new Dimension(w * SCALE, h * SCALE));
-	      JFrame frame2 = new JFrame(frame.TITLE);
-	      frame2.add(frame); //adds the frame to the JFrame
-	      frame2.pack(); //packs everything together
-	      frame2.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	      frame2.setResizable(false); //makes it so you cannot resize
-	      frame2.setLocationRelativeTo(null);
-	      frame2.setVisible(true); //sets the program to visible
-	      frame.start();
+	      Screen screen = new Screen();
+	      //frame.setLayout(new FlowLayout());
+	      frame.add(screen); //adds the frame to the JFrame
+	      frame.pack(); //packs everything together
+	      frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+	      frame.setResizable(false); //makes it so you cannot resize
+	      frame.setLocationRelativeTo(null);
+	      frame.setVisible(true); //sets the program to visible
+	      //frame.start();
 	      
 	  }
 }
