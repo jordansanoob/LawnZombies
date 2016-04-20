@@ -99,5 +99,14 @@ public class Zombie {
 		this.health = (health - 1);
 	}
 	
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
