@@ -89,7 +89,6 @@ public class Player extends JPanel{
 	public int getDirection(){
 		return this.direction;
 	}
-	
 	public int setdirection(String d){
 		return this.direction = d;
 	}
