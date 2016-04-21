@@ -86,7 +86,7 @@ public class Player extends JPanel{
 //		Player.translate(deltaX, deltaY);
 //		Bullet.translate(deltaX, deltaY);
 	}
-	public int getDirection(){
+	public String getDirection(){
 		return this.direction;
 	}
 	public int setdirection(String d){
