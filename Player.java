@@ -51,30 +51,7 @@ public class Player extends JPanel{
 		setFocusable(true);
 	
 	}
-	/**
-	 * Set the DeltaX in order to make the player stay on the screen horizontally
-	 * @param x
-	 */
-	public void setDeltaX(int x) {
-		deltaX = x;
-		Rectangle r = ((Shape) Player).getBounds(); //gets the bounds of the playerObject
-		if (r.x > this.getWidth() - r.width)
-			deltaX = -10;
-		if (r.x < 10)
-			deltaX = 10;
-	}
-	/**
-	 * sets the DeltaY to make the player stay on the screen vertically
-	 * @param y
-	 */
-	public void setDeltaY(int y) {
-		deltaY = y;
-		Rectangle r = ((Shape) Player).getBounds(); //gets the bounds of the playerObject
-		if (r.y > this.getHeight() - r.height)
-			deltaY = -10;
-		if (r.y < 10)
-			deltaY = 10;
-	}
+
 	/**
 	 * PaintComponenet which calls in the Graphics needed
 	 * adds the Player and Bullet images into the screen
