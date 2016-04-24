@@ -30,6 +30,8 @@ public class Player extends JPanel{
 	private int x, y, health;
 	private int deltaX = 0;
 	private int deltaY = 0;
+	private int vLX = 0;
+	private int vLY = 0;
 	public String direction;
 	
 	/**
@@ -100,5 +102,9 @@ public class Player extends JPanel{
 	}
 	public int getY(){
 		return this.y;
+	}
+	public void tick(){
+		x += vLX;
+		y += vLY;
 	}
 }
