@@ -32,17 +32,19 @@ public class Player extends JPanel{
 	private int velY = 0;
 	public String direction;
 	private boolean alive;
-	
+	Contoller controller; //for the health bar
+	Game game; //for the health bar
 	private BufferedImage player;
 	/**
 	 * Player class adds in the Player and Bullet images
 	 * sets the height and the width to add the screen
 	 * Sets the background color
 	 */
-	public Player(int x, int y, Game game){ 
+	public Player(int x, int y, Game game, Controller controller){ 
 		this.x = x; 
 		this.y = y;
-		
+		this.game = game;
+		this.controller = controller;
 		SpriteSheet ss = new SpriteSheet(game.getSpriteSheet());
 		player = ss.grabImage(2,  2,  32, 32);
 	}
@@ -59,6 +61,16 @@ public class Player extends JPanel{
 			y=0;
 		if(y>=800 -22)
 			y=800-22;
+			
+		//for the health bar in order to make it go down
+		for(int i = 0; i < game.eb.size(); i++){
+			EntityB tempEnt = game.eb.get(i);
+			
+			if(Physics.Collisio(this, tempEnt)){
+				controller.removeEntity(tempEnt);
+				Game.Health -= 10;
+			}
+		}
 		
 	}
 	public void render(Graphics g){
