@@ -69,6 +69,7 @@ public class Player extends JPanel{
 			if(Physics.Collisio(this, tempEnt)){
 				controller.removeEntity(tempEnt);
 				Game.Health -= 10;
+				game.setEnemy_killed(game.getEnemy_killed() + 1);
 			}
 		}
 		
