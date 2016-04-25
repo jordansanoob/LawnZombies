@@ -31,6 +31,7 @@ public class Game extends Canvas implements Runnable{
 	private boolean running = false;
 	private Thread thread;
 	private static final long serialVersionUID = 1L;
+	public static int Health = 100 * 1.5; //for the health bar 
 	
 	private BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 	private BufferedImage spriteSheet = null;
@@ -115,6 +116,7 @@ public class Game extends Canvas implements Runnable{
 	  private void tick(){
 		  p.tick();
 		  c.tick();
+	
 	  }
 	  
 	  private void render(){
@@ -129,7 +131,13 @@ public class Game extends Canvas implements Runnable{
 		  g.drawImage(image,  0,  0,  getWidth(), getHeight(), this);
 		  p.render(g);
 		  c.render(g);
-		  
+		  //for the health bar
+		  g.setColor(Color.gray);
+		  g.fillRect(5, 5, 150, 50);
+		  g.setColor(Color.red);
+		  g.fillRect(5, 5, health, 50);
+		  g.setColor(Color.white);
+		  g.drawRect(5, 5, 150, 50);
 		  //////////////////////////////////////////
 		  g.dispose();
 		  bs.show();
