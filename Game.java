@@ -51,8 +51,8 @@ public class Game extends Canvas implements Runnable{
 		}
 		
 		addKeyListener(new KeyInput(this));
-		p = new Player(w, (h*2) - 80, this);
 		c = new Controller(this);
+		p = new Player(w, (h*2) - 80, this, c); //added c for health bar controller
 	}
 	private synchronized void start(){
 		if(running){
