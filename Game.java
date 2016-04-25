@@ -107,6 +107,26 @@ public class Game extends Canvas implements Runnable{
 		  g.dispose();
 		  bs.show();
 	  }
+	  
+	  public void keyPressed(KeyEvent e){
+		int key = e.getKeyCode();
+		
+		if(key == KeyEvent.VK_RIGHT){
+			p.setX(p.getX + 5);		//need to change all of these to VelocityX and Y eventually
+		} else if(key == KeyEvent.VK_LEFT){
+			p.setX(p.getX - 5);
+		} else if(key == KeyEvent.VK_DOWN){
+			p.setY(p.getY + 5);
+		} else if(key == KeyEvent.VK_UP){
+			p.setY(p.getY - 5);
+		}
+	}
+	
+	public void keyReleased(KeyEvent e){
+		
+	}
+}
+	  
 	  public static void main (String[] args){
 		  Game game = new Game();
 		  //Controller controller = new Controller();
