@@ -5,6 +5,7 @@ import java.util.Random;
 /**
  * 
  * @author Jordan Abbatiello, Allison Rowe, Jack Erwin
+ * (Jordan Created this class)
  *The zombie class which is the enemy of the Player in Lawn Zombies
  *x is the x coordinate of the zombie
  *y is the y coordinate of the zombie
@@ -41,6 +42,9 @@ public class Zombie extends GameObject implements EntityB {
 		this.c = c;
 		this.game = game;
 	}
+	/**
+	 * tick method handles collisions and removing the zombies
+	 */ 
 	public void tick() {
 		
 		y += speed;
@@ -52,7 +56,9 @@ public class Zombie extends GameObject implements EntityB {
 			game.seteKilled(game.geteKilled() + 1);
 		}
 	}
-
+	/**
+	 * render draws the three zombies images
+	 */ 
 	public void render(Graphics g) {
 		if(health==3){
 			g.drawImage(tex.zombieDub, x, y, null);
