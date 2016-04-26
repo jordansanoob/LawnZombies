@@ -1,5 +1,6 @@
 /**
  * @author AllisonRowe, JackErwin, JordanAbbatiello
+ * (Jordan and Allison Created this Class)
  */
 //import java.awt.BorderLayout;
 
@@ -24,11 +25,11 @@ import javax.swing.JFrame;
  */
 public class Game extends Canvas implements Runnable{
 	
-	public static final int w = 320; 
-	public static final int h = 400;
+	public static final int w = 320; //width of screen
+	public static final int h = 400; //height of screen
 	public static final int SCALE = 2;
 	public static boolean open;
-	public final String title = "Lawn Zombies";
+	public final String title = "Lawn Zombies"; //title
 	private boolean running = false;
 	private Thread thread;
 	private static final long serialVersionUID = 1L;
@@ -51,7 +52,10 @@ public class Game extends Canvas implements Runnable{
 	public LinkedList<EntityA> ea;
 	public LinkedList<EntityB> eb;
 	
-	
+	/**
+	 * Add the Sprites into the screen using the BufferImageLoader
+	 * Adds the Player, Zombies and the Controller
+	 */ 
 	public void init(){
 		requestFocus();
 		BufferedImageLoader loader = new BufferedImageLoader();
@@ -59,15 +63,15 @@ public class Game extends Canvas implements Runnable{
 		try{
 			
 			spriteSheet = loader.loadImage("/spriteSheet.png");
-			background = loader.loadImage("/background.png");
-		}catch(IOException e){
+			background = loader.loadImage("/background.png"); //Background
+		}catch(IOException e){ 
 			e.printStackTrace();	
 		}
 		
 		tex = new Textures(this);
 		//p = new Player(w, (h*2) - 110, tex, this, c);
-		c = new Controller(tex, this);
-		p = new Player(w, (h*2) - 110, tex, this, c);
+		c = new Controller(tex, this); //Controller
+		p = new Player(w, (h*2) - 110, tex, this, c); //Player 
 		this.addKeyListener(new KeyInput(this));
 		c.createZombie(eCount);
 		
@@ -76,6 +80,9 @@ public class Game extends Canvas implements Runnable{
 		
 		c.createZombie(eCount);
 	}
+	/**
+	 * Starts the program
+	 */ 
 	private synchronized void start(){
 		if(running){
 		 return;
@@ -84,6 +91,10 @@ public class Game extends Canvas implements Runnable{
 		thread = new Thread(this);
 		thread.start();
 	}
+	/**
+	 * stops the program
+	 * @exception InterruptedException
+	 */ 
 	private synchronized void stop(){
 		if(!running){
 			return;
@@ -134,6 +145,9 @@ public class Game extends Canvas implements Runnable{
 	  	}
 	  	stop();
 	  }
+	  /**
+	   * Tick Method coutns the amount of zombies killed 
+	   */ 
 	  
 	  private void tick(){
 		  p.tick();
@@ -145,7 +159,10 @@ public class Game extends Canvas implements Runnable{
 			 c.createZombie(eCount);
 		  }
 	  }
-	  
+	  /**
+	   *render method draws the Frame and all the content and text inside it
+	   * adds instructions into the game
+	   */ 
 	  private void render(){
 		  BufferStrategy bs = this.getBufferStrategy();
 		  if(bs == null){
@@ -168,11 +185,15 @@ public class Game extends Canvas implements Runnable{
 		  g.fillRect(10, 10, Health, 50);
 		  g.setColor(Color.white);
 		  g.drawRect(10, 10, 150, 50);
+		  
+		  //Adds words to health bar
 		  Font font = new Font ("Courier", Font.BOLD,20);
 		  g.setFont(font);
 		  g.drawString("HEALTH BAR", 20, 45);
 		  Font font2 = new Font ("Courier", Font.BOLD,15);
 		  g.setFont(font2);
+		  
+		  //adds controls to the screen
 		  g.drawString("CONTROLS", 15, 95);
 		  Font font3 = new Font ("Courier", Font.BOLD,12);
 		  g.setFont(font3);
@@ -204,6 +225,11 @@ public class Game extends Canvas implements Runnable{
 		  bs.show();
 	  }
 	  
+	  /**
+	   * KeyPressed
+	   * sets the direction of the player based of the keys pressed
+	   * adds the bullet when the space bar is pressed
+	   */
 	  
 	  public void keyPressed(KeyEvent e){
 		int key = e.getKeyCode();
@@ -233,7 +259,9 @@ public class Game extends Canvas implements Runnable{
 			isShooting = true;
 		}
 	}
-	
+	/**
+	 * keyReleased sets the velocity of X and Y coordinate when key is released
+	 */ 
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
 		
@@ -253,10 +281,13 @@ public class Game extends Canvas implements Runnable{
 			p.setVelX(0);
 		}
 	}
+	/**
+	 * Main method
+	 */ 
 	  public static void main (String[] args){
 		  Game game = new Game();
 		  //Controller controller = new Controller();
-		  Color background = new Color(102, 255, 102);
+		  Color background = new Color(102, 255, 102); //background color
 		  
 		  game.setPreferredSize(new Dimension(w * SCALE, h * SCALE));
 	      game.setMaximumSize(new Dimension(w * SCALE, h * SCALE));
@@ -272,18 +303,33 @@ public class Game extends Canvas implements Runnable{
 	      game.start();
 	      
 	  }
+	  /**
+	   * gets sprites frome the spriteSheet
+	   */ 
 	  public BufferedImage getSpriteSheet(){
 		  return spriteSheet;
 	  }
+	  /**
+	   * gets the count of Zombies
+	   */ 
 	public int geteCount() {
 		return eCount;
 	}
+	/**
+	*Sets the count of sombies
+	*/
 	public void seteCount(int eCount) {
 		this.eCount = eCount;
 	}
+	/**
+	 * returns the number of zombies killed
+	 */ 
 	public int geteKilled() {
 		return eKilled;
 	}
+	/**
+	 * sets the number of zombies killed
+	 */ 
 	public void seteKilled(int eKilled) {
 		this.eKilled = eKilled;
 	}
