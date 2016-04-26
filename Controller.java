@@ -1,4 +1,3 @@
-
 	import java.awt.Graphics;
 import java.util.LinkedList;
 import java.util.Random;
@@ -26,7 +25,7 @@ import java.util.Random;
 		}
 		 public void createZombie(int eCount){
 			 for(int i = 0; i < eCount; i++){
-				 addEntity(new Zombie(r.nextInt(640), -10, tex, this, game));
+				 addEntity(new Zombie(r.nextInt(620), -10, tex, this, game));
 			 }
 		 }
 		
@@ -56,8 +55,8 @@ import java.util.Random;
 				entB.render(g);
 			}
 		}
-		public void addEntity(EntityA obj){
-			ea.add(obj);
+		public void addEntity(EntityA bullet){
+			ea.add(bullet);
 		}
 		public void removeEntity(EntityA obj){
 			ea.remove(obj);

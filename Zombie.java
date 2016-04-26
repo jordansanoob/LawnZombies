@@ -22,7 +22,7 @@ public class Zombie extends GameObject implements EntityB {
 	private Game game;
 	private Controller c;
 	Random r = new Random();
-	private int speed = r.nextInt(3)+1;
+	private int speed = r.nextInt(2)+1;
 	/**
 	 * the zombie object that will be created and added to the zombie array which is
 	 * then iterated over in order to draw each of the zombies
@@ -44,12 +44,22 @@ public class Zombie extends GameObject implements EntityB {
 	public void tick() {
 		
 		y += speed;
-		if(Physics.Collision(this, game.ea) && health > 0){
+		for(int i = 0; i<game.ea.size(); i++){
+			EntityA tempEnt = game.ea.get(i);
+		if(Physics.Collision(this, tempEnt) && health > 0){
 			this.punish();
 		}
-		else if(Physics.Collision(this, game.ea)){
+		else if(this.health == 0){		
+			c.removeEntity(tempEnt);
 			c.removeEntity(this);
 			game.seteKilled(game.geteKilled() + 1);
+		}
+		if(this.getY()> 740){
+			c.removeEntity(this);
+			Game.HEALTH -= 40;
+			game.seteKilled(game.geteKilled()+1);
+			
+		}
 		}
 	}
 
@@ -112,7 +122,4 @@ public class Zombie extends GameObject implements EntityB {
 	public void punish(){
 		this.health = (health - 1);
 	}
-	
-
-	
 }
