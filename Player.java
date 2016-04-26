@@ -1,5 +1,6 @@
 /**
  * @author AllisonRowe, JackErwin, JordanAbbatiello
+ * (Allison Created this Class)
  */
 
 import java.awt.Graphics;
@@ -20,7 +21,7 @@ import java.util.LinkedList;
 public class Player extends GameObject implements EntityA{ 
 
 	private int health;
-	private int velX = 0;
+	private int velX = 0; //velocity
 	private int velY = 0;
 	public String direction = "front";
 	private boolean alive;
@@ -42,7 +43,9 @@ public class Player extends GameObject implements EntityA{
 		SpriteSheet ss = new SpriteSheet(game.getSpriteSheet());
 		BufferedImage player = ss.grabImage(2,  2,  32, 32);
 	}
-	
+	/**
+	 * tick method for velocity
+	 */ 
 	public void tick(){
 		x+=velX;
 		y+=velY;
@@ -56,13 +59,13 @@ public class Player extends GameObject implements EntityA{
 		if(y>=800 -110)
 			y=800-110;
 		
-	
+	//collison of the bullets and how it affects the health bar
 	for(int i = 0; i < game.eb.size(); i++){
 		EntityB tempEnt = game.eb.get(i);
 		
 		if(Physics.Collision(this, tempEnt)){
 			controller.removeEntity(tempEnt);
-			Game.Health -= 20;
+			Game.Health -= 20; //takes away health from the health bar
 			game.seteKilled(game.geteKilled() + 1);
 			if(Game.Health == 0){
 				System.exit(0); //need to change
@@ -70,6 +73,9 @@ public class Player extends GameObject implements EntityA{
 		}
 	}
 	}
+	/**
+	 * render methof for direction of player
+	 */ 
 	public void render(Graphics g){ 
 		if(direction == "front"){
 		 g.drawImage(tex.playerF, x, y, null);
@@ -84,44 +90,55 @@ public class Player extends GameObject implements EntityA{
 			 g.drawImage(tex.playerR, x, y, null);
 			}
 	}
-
+	//gets the directio
 	public String getDirection(){
 		return this.direction;
 	}
+	//gets the health
 	public int gethealth(){
 		return this.health;
 	}
+	//gets the x
 	public int getX(){
 		return this.x;
 	}
+	//gets the y
 	public int getY(){
 		return this.y;
-	}	
+	}
+	//sets the direction
 	public String setDirection(String d){
 		return this.direction = d;
 	}
+	//checks if the player is still alive
 	public void setAlive(boolean alive){
 		this.alive = alive;
 	}
+	//sets the x
 	public void setX(int x){
 		this.x = x;
 	}
+	//sets the y
 	public void setY(int y){
 		this.y = y;
 	}
+	//increases x
 	public void incX(int i){
 		this.x += i;
 	}
+	//increases y
 	public void incY(int j){
 		this.y += j;
 	}
-	
+	//sets velocity x
 	public void setVelX(int velX){
 		this.velX = velX;
 	}
+	//sets velocity y
 	public void setVelY(int velY){
 		this.velY = velY;
 	}
+	//gets the bounds
 	public Rectangle getBounds(){
 		return new Rectangle(x, y, 32, 32);
 	}
