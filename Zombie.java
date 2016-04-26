@@ -42,21 +42,15 @@ public class Zombie extends GameObject implements EntityB {
 		this.game = game;
 	}
 	public void tick() {
-		for(int i = 0; i < game.ea.size(); i++){
-			EntityA tempEnt = game.ea.get(i);
 		
 		y += speed;
-
-		if(Physics.Collision(this, tempEnt) && health > 0){
+		if(Physics.Collision(this, game.ea) && health > 0){
 			this.punish();
-		
 		}
-		else if(Physics.Collision(this, tempEnt)){
-			c.removeEntity(tempEnt);
+		else if(this.health == 0){				
 			c.removeEntity(this);
 			game.seteKilled(game.geteKilled() + 1);
 		}
-	}
 	}
 
 	public void render(Graphics g) {
@@ -118,7 +112,4 @@ public class Zombie extends GameObject implements EntityB {
 	public void punish(){
 		this.health = (health - 1);
 	}
-	
-
-	
 }
