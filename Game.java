@@ -195,13 +195,16 @@ public class Game extends Canvas implements Runnable{
 		  
 		  //adds controls to the screen
 		  g.drawString("CONTROLS", 15, 95);
-		  Font font3 = new Font ("Courier", Font.BOLD,12);
+		  g.drawString("________", 15, 97);
+		  Font font3 = new Font ("Courier", Font.BOLD,15);
 		  g.setFont(font3);
+		  g.setColor(Color.DARK_GRAY);
 		  g.drawString("[Q][W][E]", 15, 115);
 		  g.drawString("[A][S][D]", 15, 125);
 		  g.drawString("[ SPACE BAR ]", 15, 145);
-		  Font font4 = new Font ("Courier", Font.BOLD,10);
+		  Font font4 = new Font ("Courier", Font.BOLD,14);
 		  g.setFont(font4);
+		  g.setColor(Color.white);
 		  g.drawString("A - Left", 15, 165);
 		  g.drawString("D - Right", 15, 175);
 		  g.drawString("S - Down", 15, 185);
