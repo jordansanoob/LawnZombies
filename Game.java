@@ -81,12 +81,10 @@ public class Game extends Canvas implements Runnable{
 		p = new Player(w, (h*2) - 110, tex, this, c);
 		menu = new Menu();
 		this.addKeyListener(new KeyInput(this));
-		c.createZombie(eCount);
 		
+		c.createZombie(eCount);
 		ea = c.getEntityA();
 		eb = c.getEntityB();
-		
-		c.createZombie(eCount);
 	}
 	/**
 	 * Starts the program
